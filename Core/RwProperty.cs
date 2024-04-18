@@ -1,4 +1,3 @@
-
 namespace Core
 {
     public class RWProperty<T> : DiProperty<T>
@@ -9,21 +8,12 @@ namespace Core
             set => Value = value;
         }
 
-        public RWProperty() : base() {}
-        public RWProperty(T initValue) : base(initValue){}
-    }
-
-    public class ROProperty<T> : DiProperty<T>
-    {
-        public T RValue => Value;
-        
-        public ROProperty() : base() {}
-        public ROProperty(T initValue) : base(initValue){}
-
-        public void SetValue(T value)
+        public RWProperty() : base()
         {
-            Value = value;
         }
 
+        public RWProperty(T initValue) : base(initValue)
+        {
+        }
     }
 }
