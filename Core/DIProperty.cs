@@ -37,12 +37,12 @@ namespace Core
 
         public void Subscribe(Action<T> action)
         {
-            actionsForAdd.Add(action, action);
+            actionsForAdd.TryAdd(action, action);
         }
 
         public void Unsubscribe(Action<T> action)
         {
-            actionsForRemove.Add(action, action);
+            actionsForRemove.TryAdd(action, action);
         }
 
         public void UnsubscribeAll()
@@ -60,7 +60,7 @@ namespace Core
         private void UpdateActions()
         {
             foreach (var a in actionsForAdd)
-                actions.Add(a.Key, a.Value);
+                actions.TryAdd(a.Key, a.Value);
             actionsForAdd.Clear();
             foreach(var a in actionsForRemove)
                 actions.Remove(a.Key);
