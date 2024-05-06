@@ -14,7 +14,7 @@
 
         public void SetValue(T value)
         {
-            if (!Value.Equals(value))
+            if (Value is null || !Value.Equals(value))
                 Value = value;
         }
     }
