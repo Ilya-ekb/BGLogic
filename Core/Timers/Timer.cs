@@ -17,9 +17,9 @@ namespace Core.Timers
         
         private float value;
 
-        private Action<object> onReachedPeriod;
+        private Action<ITimer> onReachedPeriod;
 
-        public Timer(int loopType, float period, Action<object> onReachedPeriodAction, bool playOnAwake, bool once = false) 
+        public Timer(int loopType, float period, Action<ITimer> onReachedPeriodAction, bool playOnAwake, bool once = false) 
         {
             loop = loopType;
             Period = period;

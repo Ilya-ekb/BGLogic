@@ -6,7 +6,7 @@ namespace Core.Timers
     public static class TimerFactory
     {
         private static readonly List<ITimer> allTimers = new List<ITimer>();
-        public static ITimer CreateTimer(int updateType, float period, Action<object> onReachedPeriodAction,
+        public static ITimer CreateTimer(int updateType, float period, Action<ITimer> onReachedPeriodAction,
             bool playOnAwake = true, bool invokeOnce = false)
         {
             var timer = new Timer(updateType, period, onReachedPeriodAction, playOnAwake, invokeOnce);
