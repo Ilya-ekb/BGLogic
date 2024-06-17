@@ -25,11 +25,10 @@ namespace Core.Timers
             Period = period;
             onReachedPeriod = onReachedPeriodAction;
             invokeOnce = once;
-            
-            if (playOnAwake)
-            {
-                Play();
-            }
+
+            if (!playOnAwake) return;
+            SetAlive();
+            Play();
         }
 
         public void Play()
