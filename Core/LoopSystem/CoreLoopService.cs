@@ -12,6 +12,7 @@ namespace Core.LoopSystem
 
         public static CoreLoop GetLoop(int type)
         {
+            if (type < 0 || type >= loops.Count) return null;
             return loops[type];
         }
 

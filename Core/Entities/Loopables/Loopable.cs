@@ -24,7 +24,7 @@ namespace Core.Entities.Loopables
             if (actions[type] is null)
             {
                 CallWhenAdded = callNow;
-                CoreLoopService.GetLoop(type).Add(this);
+                CoreLoopService.GetLoop(type)?.Add(this);
                 actions[type] = action;
             }
             else
@@ -37,7 +37,7 @@ namespace Core.Entities.Loopables
         {
             if (actions[type] is { })
             {
-                CoreLoopService.GetLoop(type).Remove(this);
+                CoreLoopService.GetLoop(type)?.Remove(this);
                 actions[type] = null;
             }
         }
