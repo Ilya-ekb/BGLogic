@@ -11,8 +11,7 @@ namespace Core
         private static uint staticUniqueCounter;
         private static ThreadDispatcher threadDispatcher;
 
-        private static readonly Dictionary<string, Dictionary<int, Action<object[]>>> actions =
-            new Dictionary<string, Dictionary<int, Action<object[]>>>();
+        private static readonly Dictionary<string, Dictionary<int, Action<object[]>>> actions = new Dictionary<string, Dictionary<int, Action<object[]>>>();
 
         public static string GetUniqueCategory()
         {
