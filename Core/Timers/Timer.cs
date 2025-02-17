@@ -84,7 +84,7 @@ namespace Core.Timers
             LoopOn(loop, Execute, playOnAwake);
         }
 
-        private void Execute()
+        private void Execute(float deltaTime)
         {
             if (!IsPlaying)
             {
@@ -102,7 +102,7 @@ namespace Core.Timers
                 return;
             }
 
-            value += Time.deltaTime;
+            value += deltaTime;
             OnTimerTick?.Invoke(new TimerArgs(this, value, Period));
         }
 
