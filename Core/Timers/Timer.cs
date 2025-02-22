@@ -84,7 +84,7 @@ namespace Core.Timers
             LoopOn(loop, Execute, playOnAwake);
         }
 
-        private void Execute()
+        private void Execute(float deltaTime)
         {
             if (!IsPlaying)
             {

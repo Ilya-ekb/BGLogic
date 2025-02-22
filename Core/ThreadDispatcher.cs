@@ -38,7 +38,7 @@ namespace Game.Networks
                 Play();
         }
 
-        private void OnUpdate()
+        private void OnUpdate(float deltaTime)
         {
             while (events.Count > 0)
                 if(events.TryDequeue(out var action))
