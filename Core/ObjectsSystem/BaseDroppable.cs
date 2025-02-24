@@ -14,6 +14,7 @@ namespace Core.ObjectsSystem
         protected BaseDroppable(IDroppable parent)
         {
             this.parent = parent;
+            this.parent.Dropped += _ => Drop();
             Name = GetType().Name;
         }
 
