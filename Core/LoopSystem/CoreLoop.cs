@@ -33,12 +33,15 @@ namespace Core.LoopSystem
         private uint behaviourOrder;
 
         private readonly LoopSession session;
-
+        private long Now => DateTime.Now.Ticks;
+        private float DeltaTime => TimeSpan.FromTicks(Now - lastTick).Milliseconds / 1000.0f; 
+        private long lastTick;
         public CoreLoop(int type)
         {
             comparer = new InnerComparer(type);
             loopType = type;
             session = new LoopSession();
+            lastTick = Now;
         }
 
         public void ExecuteAllEvents()
@@ -98,8 +101,9 @@ namespace Core.LoopSystem
 
                 var current = loopables[i];
                 if (current.CallActions)
-                    current.GetAction(loopType)?.Invoke();
+                    current.GetAction(loopType)?.Invoke(DeltaTime);
             }
+            lastTick = Now;
         }
 
         private void InnerRemove(Loopable behaviour)
