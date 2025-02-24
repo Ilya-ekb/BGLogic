@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Core.Entities.Loopables;
-using UnityEngine;
 
 namespace Core.LoopSystem
 {
@@ -28,23 +27,18 @@ namespace Core.LoopSystem
             }
         }
 
-        private float DeltaTime => TimeSpan.FromSeconds(Now - lastTime).Milliseconds / 1000.0f;
-        private static long Now => DateTime.Now.Ticks;
-
         private readonly int loopType;
         private readonly InnerComparer comparer;
 
         private uint behaviourOrder;
 
         private readonly LoopSession session;
-        private long lastTime;
 
         public CoreLoop(int type)
         {
             comparer = new InnerComparer(type);
             loopType = type;
             session = new LoopSession();
-            lastTime = Now;
         }
 
         public void ExecuteAllEvents()
@@ -104,9 +98,8 @@ namespace Core.LoopSystem
 
                 var current = loopables[i];
                 if (current.CallActions)
-                    current.GetAction(loopType)?.Invoke(DeltaTime);
+                    current.GetAction(loopType)?.Invoke();
             }
-            lastTime = Now;
         }
 
         private void InnerRemove(Loopable behaviour)

@@ -102,7 +102,7 @@ namespace Core.Timers
                 return;
             }
 
-            value += Time.deltaTime;
+            value += deltaTime;
             OnTimerTick?.Invoke(new TimerArgs(this, value, Period));
         }
 

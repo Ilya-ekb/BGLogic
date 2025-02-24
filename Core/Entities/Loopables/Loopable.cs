@@ -35,7 +35,7 @@ namespace Core.Entities.Loopables
 
         public void LoopOff(int type)
         {
-            if (actions[type] is { })
+            if (actions[type] is not null)
             {
                 CoreLoopService.GetLoop(type)?.Remove(this);
                 actions[type] = null;
